@@ -3,17 +3,27 @@
     <button @click="store.counter--">-</button>
     <span>{{ store.getCount }}</span>
     <button @click="store.counter++">+</button>
-    <button>data</button>
+    <button @click="load()">data</button>
+    <div>
+      Company : {{ company }}
+    </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { useStore } from "~~/store"
+import { useCompany } from "~~/composables/useCompany"
+
 export default defineComponent({
-  setup() {
+  async setup() {
     const store = useStore()
-    
-    return { store }
+    let company = ref(null)
+
+    const load = async () => {
+      company.value = await useCompany()
+    }
+
+    return { store, company, load }
   }
 })
 </script>
