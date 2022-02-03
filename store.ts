@@ -9,11 +9,11 @@ export const useStore = defineStore('main', {
   },
   actions: {
     increment: () => {
-      // this is undefined
+      // FIX : this is undefined
       this.counter++
     },
     decrement: () => {
-      // this is undefined ??!
+      // FIX : this is undefined ??!
       this.counter--
     }
   },
